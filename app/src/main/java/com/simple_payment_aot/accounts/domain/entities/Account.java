@@ -1,5 +1,6 @@
 package com.simple_payment_aot.accounts.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,10 @@ public class Account {
     public Account(){}
 
 
+    @JsonProperty("account_id")
+    private Integer accountId;
     @Id
+    @JsonProperty("document_number")
     private String documentNumber;
 
     public String getDocumentNumber() {
@@ -26,4 +30,11 @@ public class Account {
         this.documentNumber = documentNumber;
     }
 
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
 }
