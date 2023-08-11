@@ -1,9 +1,9 @@
 package com.simple_payment_aot.accounts.web;
 
 import com.simple_payment_aot.accounts.domain.services.AccountService;
-import com.simple_payment_aot.accounts.web.dtos.CreateAccountDto;
+import com.simple_payment_aot.accounts.web.dtos.CreateAccountRequestDto;
+import com.simple_payment_aot.accounts.web.dtos.CreateAccountResponseDto;
 import com.simple_payment_aot.accounts.web.dtos.RetrieveAccountDto;
-import com.simple_payment_aot.accounts.web.handlers.AccountsExceptionHandler;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,20 +17,19 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/accounts")
-    public ResponseEntity<Void> create(@Valid @RequestBody CreateAccountDto createAccountDto) {
+    public ResponseEntity<CreateAccountResponseDto> create(@Valid @RequestBody CreateAccountRequestDto createAccountRequestDto) {
 
-        this.accountService.create(createAccountDto);
+        CreateAccountResponseDto createAccountResponseDto = this.accountService.create(createAccountRequestDto);
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return new ResponseEntity<>(createAccountResponseDto, HttpStatus.CREATED);
     }
 
-    @GetMapping("/accounts/:id")
-    public ResponseEntity<RetrieveAccountDto> get(@RequestParam("id") String accountId) {
-
-        //TODO: Corrigir body
-        if(this.accountService.get(accountId) == null) return ResponseEntity.status(HttpStatus.NOT_FOUND)
+    @GetMapping("/accounts/{accountId}")
+    public ResponseEntity<RetrieveAccountDto> get(@PathVariable  Integer accountId) {
+        RetrieveAccountDto retrieveAccountDto = this.accountService.get(accountId);
+        if(retrieveAccountDto == null) return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(null);
 
-        return new ResponseEntity(this.accountService.get(accountId), HttpStatus.OK);
+        return new ResponseEntity<>(retrieveAccountDto, HttpStatus.OK);
     }
 }

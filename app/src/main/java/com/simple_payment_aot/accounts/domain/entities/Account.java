@@ -15,10 +15,11 @@ public class Account {
 
     public Account(){}
 
-
+    @Id
+    @GeneratedValue
     @JsonProperty("account_id")
     private Integer accountId;
-    @Id
+
     @JsonProperty("document_number")
     private String documentNumber;
 

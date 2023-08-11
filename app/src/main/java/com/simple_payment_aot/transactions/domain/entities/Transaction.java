@@ -20,7 +20,7 @@ public class Transaction {
     @Column(name = "transaction_id")
     private Integer transactionId;
     @Column(name = "operation_type_id")
-    private String operationTypeId;
+    private Integer operationTypeId;
     @Column(name = "account_id")
     private Integer accountId;
     private Double amount;
