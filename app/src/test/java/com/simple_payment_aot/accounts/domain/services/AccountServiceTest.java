@@ -27,7 +27,8 @@ public class AccountServiceTest {
     @Test
     public void testGivenValidatedCreateAccountDto_WhenCreate_ThenReturnResponseWithId(){
         CreateAccountRequestDto createAccountRequestDto =
-                new CreateAccountRequestDto("123456789");
+                new CreateAccountRequestDto();
+        createAccountRequestDto.setDocumentNumber("123456789");
 
         Account account = new Account();
         account.setAccountId(1);
