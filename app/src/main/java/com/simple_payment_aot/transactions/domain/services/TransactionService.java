@@ -28,7 +28,7 @@ public class TransactionService {
 
         Transaction account = new Transaction(createTransactionDto.getAccountId(),
                 OperationType.fromValue(createTransactionDto.getOperationType()),
-                Double.parseDouble(createTransactionDto.getAmount()));
+                Long.parseLong(createTransactionDto.getAmount()));
         this.transactionRepository.save(account);
     }
 }
