@@ -3,9 +3,7 @@ package com.simple_payment_aot.transactions.web.dtos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 
-public class CreateTransactionDto {
-
-    //TODO: Verificar mensagens de retorno
+public class CreateTransactionRequestDto {
 
     @Min(value = 1, message = "Tipo de operação deve ser de 1 a 4")
     @Max(value = 4, message = "Tipo de operação deve ser de 1 a 4")
@@ -36,6 +34,9 @@ public class CreateTransactionDto {
     }
 
     public String getAmount() {
+        return amount;
+    }
+    public String getFilteredAmount() {
         return amount.replace(".", "");
     }
 
