@@ -1,6 +1,6 @@
 # SIMPLE PAYMENT AOT
 
-Este projeto é uma representação de API de pagamento simples, com possibilidade de ser compilado de forma AOT através de GraalVM utilizando Spring Boot 3.
+Este projeto é uma representação de API de pagamento simples, com possibilidade de ser compilado de forma AOT através de GraalVM utilizando Spring Boot 3. Além disso, foram aplicados conceitos de DDD como agregados, dtos e separação de dominio e infraestrutura. 
 
 ## Documentação
 
